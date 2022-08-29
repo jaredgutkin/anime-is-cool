@@ -9,10 +9,10 @@ function App() {
   const [search, setSearch] = ("")
 
   const getTopAnime = async () => {
-    const temp = await fetch(`https://api.jikan.moe/v4/top/anime`)
+    const temp = await fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
       .then(res => res.json())
 
-    setTopAnime(temp.top.slice(0, 2))
+    setTopAnime(temp.top.slice(0, 5))
   }
 
   useEffect(() => {
@@ -20,12 +20,12 @@ function App() {
 
   }, [])
 
-  console.log(topAnime)
+
   return (
     <div className="App">
       <Header />
       <div className="content-wrap">
-        <Sidebar />
+        <Sidebar topAnime={topAnime}/>
         <Main />
       </div>
 
