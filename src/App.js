@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 function App() {
   const [animeList, setAnimeList] = useState([])
   const [topAnime, setTopAnime] = useState([])
-  const [search, setSearch] = ("")
+  const [search, setSearch] = useState("")
 
   const getTopAnime = async () => {
     const temp = await fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
@@ -15,7 +15,7 @@ function App() {
     setTopAnime(temp.top.slice(0, 5))
   }
 
-  const handleSearch = e => {
+  const handleSearch = (e) => {
     e.preventDefault();
 
     fetchAnime(search)
